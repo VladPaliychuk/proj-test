@@ -1,14 +1,5 @@
 package edu.pzks.projtest.model;
 
-
-/*
-  @author   george
-  @project   proj-test
-  @class  Item
-  @version  1.0.0 
-  @since 09.09.24 - 11.53
-*/
-
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -19,16 +10,18 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 @ToString
 @Document
-public class Item {
+public class Product {
     private String id;
     private String name;
     private String code;
     private String description;
+    private double price;
 
-    public Item(String name, String code, String description) {
+    public Product(String name, String code, String description, double price) {
         this.name = name;
         this.code = code;
         this.description = description;
+        this.price = price;
     }
 
     @Override
@@ -36,8 +29,8 @@ public class Item {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Item item = (Item) o;
-        return getId().equals(item.getId());
+        Product product = (Product) o;
+        return getId().equals(product.getId());
     }
 
     @Override
